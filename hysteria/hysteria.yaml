@@ -1,0 +1,15 @@
+# listen: :8443
+
+tls:
+  cert: /etc/hysteria/certs/server.crt
+  key: /etc/hysteria/certs/server.key
+
+auth:
+  type: password
+  password: Se7RAuFZ8Lzg
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com/
+    rewriteHost: true
