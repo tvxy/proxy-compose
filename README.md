@@ -6,8 +6,11 @@
 
 目前已支持以下协议的快速部署：
 
-* **Xray**
-* **Hysteria2**
+| 协议 | 实现 | 目录与部署说明 |
+| --- | --- | --- |
+| VLESS | Xray-core | [vless](./vless/README.md) |
+| Hysteria2 | Hysteria | [hysteria2](./hysteria2/README.md) |
+| AnyTLS | sing-box | [anytls](./anytls/README.md) |
 
 ---
 
@@ -62,9 +65,9 @@ curl -fsSL https://get.docker.com | sh
 ## 📂 部署步骤
 
 1. **克隆项目到本地**：`git clone https://github.com/tvxy/proxy-compose.git`
-2. **进入对应目录**：根据你想使用的协议，进入项目中对应的文件夹。
-3. **修改配置**：根据需要编辑文件夹内的配置文件。
-4. **启动服务**：
+2. **进入协议目录**：`cd proxy-compose/vless`、`cd proxy-compose/hysteria2` 或 `cd proxy-compose/anytls`。
+3. **修改配置**：按照对应目录的 README 设置密码或密钥，并按需生成证书、放行端口。
+4. **启动服务**：在对应协议目录执行 `docker compose up -d`。
 
 ### 常用命令
 

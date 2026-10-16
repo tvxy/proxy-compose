@@ -1,0 +1,16 @@
+services:
+  sing-box:
+    image: ghcr.io/sagernet/sing-box:latest
+    restart: unless-stopped
+    working_dir: /etc/sing-box
+    ports:
+      - "10443:10443/tcp"
+    volumes:
+      - ./config.json:/etc/sing-box/config.json:ro
+      - ./certs:/etc/sing-box/certs:ro
+    command: ["-c", "config.json", "run"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

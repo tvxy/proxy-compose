@@ -1,0 +1,44 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "local",
+        "tag": "local-dns"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "anytls",
+      "tag": "anytls-in",
+      "listen": "0.0.0.0",
+      "listen_port": 10443,
+      "users": [
+        {
+          "name": "default",
+          "password": "CHANGE_ME_TO_A_RANDOM_PASSWORD"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com",
+        "certificate_path": "./certs/server.crt",
+        "key_path": "./certs/server.key"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "default_domain_resolver": "local-dns",
+    "final": "direct"
+  }
+}

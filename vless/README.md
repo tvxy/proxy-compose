@@ -1,4 +1,4 @@
-# Xray-core 指南
+# VLESS 指南
 
 配置文件是：`config.json`，里面的配置来自官方的 `Xray-examples` 项目，熟悉配置的也可自行配置。
 
@@ -41,3 +41,22 @@ docker run --rm ghcr.io/xtls/xray-core:latest x25519
 ```bash
 docker compose up -d
 ```
+
+## 4. 客户端连接
+
+| 参数 | 内容 |
+| --- | --- |
+| 协议 | VLESS |
+| 服务器 | 服务器公网 IP |
+| 端口 | `443`（TCP） |
+| UUID | 与 `config.json` 中 VLESS 用户的 `id` 一致 |
+| 加密方式 | `none` |
+| 传输方式 | TCP / RAW |
+| 传输安全 | REALITY |
+| Flow | `xtls-rprx-vision` |
+| SNI | `speed.cloudflare.com` |
+| 指纹 / Fingerprint | `chrome` |
+| 公钥 / Public Key / Password | 生成 X25519 密钥对时输出的 `Password`，不是 `PrivateKey` |
+| Short ID | `0123456789abcdef`，与服务端 `shortIds` 中的一项一致 |
+
+在服务器安全组和防火墙中放行 **TCP 443**。客户端连接对外端口 `443`，不是内部端口 `4431`。
